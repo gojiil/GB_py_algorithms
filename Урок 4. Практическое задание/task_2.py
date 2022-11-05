@@ -12,6 +12,13 @@
 П.С. задание не такое простое, как кажется
 """
 
+"""
+Мемоизация в данном случае лишь создает иллюзию быстрого выполнения функции, 
+так как при повторении функции в модуле timeit значения в первый раз сохраняются в кэше, 
+а каждый последующий лишь вызываются оттуда. 
+Соответстенно оптимизации выполнения не происходит.
+"""
+
 from timeit import timeit
 from random import randint
 
@@ -69,14 +76,14 @@ print(
     timeit(
         'recursive_reverse_mem(num_100)',
         setup='from __main__ import recursive_reverse_mem, num_100',
-        number=10000))
+        number=1))
 print(
     timeit(
         'recursive_reverse_mem(num_1000)',
         setup='from __main__ import recursive_reverse_mem, num_1000',
-        number=10000))
+        number=1))
 print(
     timeit(
         'recursive_reverse_mem(num_10000)',
         setup='from __main__ import recursive_reverse_mem, num_10000',
-        number=10000))
+        number=1))
